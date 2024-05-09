@@ -4,7 +4,7 @@ class Heading {
 
     body = document.querySelector('body');
 
-    createDomElement (tag = 'div', content = 'content for element', classNames) {
+    createDomElement (tag = 'div', content = 'content for element', classNames = '') {
         const preparedElement = document.createElement(tag);
         preparedElement.classList.add(classNames);
         preparedElement.textContent = content;
@@ -12,7 +12,7 @@ class Heading {
     }
 
     render () {
-        const createdElement = this.createDomElement('h1', 'content for h1 tag', classNames);
+        const createdElement = this.createDomElement('h1', 'content for h1 tag', 'classNames');
         this.body.appendChild(createdElement);
     }
 }
