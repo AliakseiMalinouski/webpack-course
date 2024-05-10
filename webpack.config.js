@@ -62,7 +62,13 @@ const config = {
                 // path: path.join(process.cwd(), './build/**/*)
             ]
         }),
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Webpack application',
+            filename: 'index_name.html',
+            meta: {
+                description: 'Some description',
+            }
+        }),
     ],
     devServer: {
         static: {
