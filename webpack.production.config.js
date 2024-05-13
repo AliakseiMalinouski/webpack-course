@@ -15,7 +15,7 @@ const config = {
         //     keep: /\.css/,
         // } - similar to CleanWebpackPlugin if you have +5 webpack version
     },
-    mode: 'none',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -52,7 +52,7 @@ const config = {
         ]
     },
     plugins: [
-        new TerserPlugin(),
+        new TerserPlugin(), // included by default
         new MiniCssExtractPlugin({
             filename: 'styles.[contenthash].css',
         }),
@@ -70,14 +70,14 @@ const config = {
             }
         }),
     ],
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, './'),
-        },
-        port: 9000,
-        compress: true,
-        historyApiFallback: true,
-    },
+    // devServer: {
+    //     static: {
+    //         directory: path.resolve(__dirname, './'),
+    //     },
+    //     port: 9000,
+    //     compress: true,
+    //     historyApiFallback: true,
+    // },
 }
 
 module.exports = config;
