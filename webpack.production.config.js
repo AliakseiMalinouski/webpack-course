@@ -5,9 +5,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-    entry: './src/index.js',
+    entry: {
+        'first_entry_index': './src/first_entry_index.js',
+        'second_entry_index': './src/second_entry_index.js',
+    },
     output: {
-        filename: 'bundle.[contenthash].js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
         publicPath: '',
         // clean: {
@@ -54,7 +57,7 @@ const config = {
     plugins: [
         new TerserPlugin(), // included by default
         new MiniCssExtractPlugin({
-            filename: 'styles.[contenthash].css',
+            filename: '[name].[contenthash].css',
         }),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
@@ -63,11 +66,22 @@ const config = {
             ]
         }),
         new HtmlWebpackPlugin({
-            title: 'Webpack application',
-            filename: 'index_name.html',
+            filname: 'first_entry_index.html',
+            chunks: ['first_entry_index'],
+            title: 'First entry',
             meta: {
-                description: 'Some description',
-            }
+                description: 'Some first description',
+            },
+            minify: false,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'second_entry_index.html',
+            chunks: ['second_entry_index'],
+            title: 'Second entry',
+            meta: {
+                description: 'Some second description'
+            },
+            minify: false,
         }),
     ],
     // devServer: {
