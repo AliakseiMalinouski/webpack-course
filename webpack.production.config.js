@@ -19,6 +19,12 @@ const config = {
         // } - similar to CleanWebpackPlugin if you have +5 webpack version
     },
     mode: 'production',
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 3000
+        }
+    },
     module: {
         rules: [
             {

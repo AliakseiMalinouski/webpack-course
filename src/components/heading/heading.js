@@ -11,8 +11,8 @@ class Heading {
         return preparedElement;
     }
 
-    render () {
-        const createdElement = this.createDomElement('h1', 'content for h1 tag', 'classNames');
+    render (pageName) {
+        const createdElement = this.createDomElement('h1', 'aa', 'classNames');
         this.body.appendChild(createdElement);
     }
 }
