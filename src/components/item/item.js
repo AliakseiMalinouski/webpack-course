@@ -7,6 +7,6 @@ const createItem = () => {
     body.appendChild(image);
 }
 
-export {
-    createItem,
-}
+createItem();
+
+export default createItem;

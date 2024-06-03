@@ -3,16 +3,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
 
 const config = {
-    entry: {
-        'first_entry_index': './src/first_entry_index.js',
-        'second_entry_index': './src/second_entry_index.js',
-    },
+    entry: './src/first_entry_index.js',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: '',
+        publicPath: 'https://localhost:9000',
         // clean: {
         //     dry: true,
         //     keep: /\.css/,
@@ -88,6 +86,13 @@ const config = {
                 description: 'Some second description'
             },
             minify: false,
+        }),
+        new ModuleFederationPlugin({
+            name: 'First Webpack application',
+            filename: 'remoteEntry.js',
+            exposes: {
+                
+            }
         }),
     ],
     // devServer: {
