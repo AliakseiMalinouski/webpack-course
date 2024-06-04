@@ -88,10 +88,10 @@ const config = {
             minify: false,
         }),
         new ModuleFederationPlugin({
-            name: 'First Webpack application',
+            name: 'FirstApp',
             filename: 'remoteEntry.js',
             exposes: {
-                
+                './ItemFromFirstApp': './src/components/item/item.js'
             }
         }),
     ],

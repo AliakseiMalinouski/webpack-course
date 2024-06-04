@@ -2,7 +2,10 @@
   "name": "webpack-course",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "first_entry_index.js",
+  "browser": {
+    "[module-name]": false   
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "devBuild": "webpack --config webpack.dev.config.js",

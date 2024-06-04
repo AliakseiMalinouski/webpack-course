@@ -10,7 +10,7 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './dist'),
-        publicPath: 'https://localhost:9000/',
+        publicPath: 'http://localhost:9000/',
         // clean: {
         //     dry: true,
         //     keep: /\.css/,
@@ -72,13 +72,13 @@ const config = {
                 description: 'Some description',
             }
         }),
-        // new ModuleFederationPlugin({
-        //     name: 'FirstApp',
-        //     filename: 'remoteEntry.js',
-        //     exposes: {
-        //         './ItemFromFirstApp': './src/components/item/item.js'
-        //     }
-        // }),
+        new ModuleFederationPlugin({
+            name: 'FirstApp',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './ItemFromFirstApp': './src/components/item/item.js'
+            }
+        }),
     ],
     devServer: {
         port: 9000,
